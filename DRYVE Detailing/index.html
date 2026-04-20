@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DRYVE Detailing</title>
-    <link rel="stylesheet" href="css/dryve.css">
+    <link rel="stylesheet" href="./css/dryve.css">
 </head>
 <body>
 
     <header class="site-header">
         <a href="#home" class="logo-link">
-            <img src="assets/images/dryve_header.png" alt="DRYVE Detailing logo" class="logo">
+            <img src="./assets/images/dryve_header.png" alt="DRYVE Detailing logo" class="logo">
         </a>
 
-        <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav" type="button">
             <span></span>
             <span></span>
             <span></span>
@@ -33,12 +33,12 @@
     <main>
         <section id="home" class="hero">
             <div class="hero-pic">
-                <img src="assets/images/hero_pic.jpg" alt="Car detailing hero image">
+                <img src="./assets/images/hero_pic.jpg" alt="Car detailing hero image">
             </div>
 
             <div class="hero-text">
                 <h1>DRYVE Detailing</h1>
-                <p>Mobile Vehicle valet services in Reading</p>
+                <p>Mobile vehicle valet services in Reading</p>
             </div>
 
             <div class="hero-buttons">
@@ -52,7 +52,7 @@
                 <h1>About Us</h1>
 
                 <div class="intro-pic">
-                    <img src="assets/images/opening_pic.jpg" alt="Microfibre cloths and detailing products">
+                    <img src="./assets/images/opening_pic.jpg" alt="Microfibre cloths and detailing products">
                 </div>
 
                 <p>
@@ -96,7 +96,7 @@
 
         <section id="contact" class="contact-section">
             <div class="con-hero">
-                <img src="assets/images/con_pic.jpg" alt="Car being cleaned">
+                <img src="./assets/images/con_pic.jpg" alt="Car being cleaned">
 
                 <div class="con-txt">
                     <h2>Contact Us</h2>
@@ -114,7 +114,7 @@
     <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-column">
-                <img src="assets/images/dryve_header.png" alt="DRYVE Detailing logo" class="footer-logo">
+                <img src="./assets/images/dryve_header.png" alt="DRYVE Detailing logo" class="footer-logo">
                 <p>Premium mobile car detailing based in Reading.</p>
             </div>
 
@@ -143,19 +143,21 @@
         const menuToggle = document.getElementById("menuToggle");
         const siteNav = document.getElementById("siteNav");
 
-        menuToggle.addEventListener("click", () => {
-            const isOpen = siteNav.classList.toggle("nav-open");
-            menuToggle.classList.toggle("is-open");
-            menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-        });
-
-        document.querySelectorAll(".nav-list a").forEach(link => {
-            link.addEventListener("click", () => {
-                siteNav.classList.remove("nav-open");
-                menuToggle.classList.remove("is-open");
-                menuToggle.setAttribute("aria-expanded", "false");
+        if (menuToggle && siteNav) {
+            menuToggle.addEventListener("click", () => {
+                const isOpen = siteNav.classList.toggle("nav-open");
+                menuToggle.classList.toggle("is-open");
+                menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
             });
-        });
+
+            document.querySelectorAll(".nav-list a").forEach(link => {
+                link.addEventListener("click", () => {
+                    siteNav.classList.remove("nav-open");
+                    menuToggle.classList.remove("is-open");
+                    menuToggle.setAttribute("aria-expanded", "false");
+                });
+            });
+        }
     </script>
 
 </body>
